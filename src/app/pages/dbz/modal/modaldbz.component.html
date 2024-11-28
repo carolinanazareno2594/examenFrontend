@@ -1,0 +1,34 @@
+<div class="modal fade" #modalElement tabindex="-1" aria-labelledby="characterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="characterModalLabel">Detalles de {{selectedCharacter?.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="selectedCharacter = null"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedCharacter">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <div class="contenedor-img mx-auto">
+              <img [src]="selectedCharacter.image" [alt]="selectedCharacter.name" class="img-fluid mb-3">
+            </div>
+            <p><strong>Nombre:</strong> {{selectedCharacter.name}}</p>
+            <p><strong>Ki:</strong> {{selectedCharacter.ki}}</p>
+            <p><strong>Max Ki:</strong> {{selectedCharacter.maxKi}}</p>
+            <p><strong>Race:</strong> {{selectedCharacter.race}}</p>
+            <p><strong>Gender:</strong> {{selectedCharacter.gender}}</p>
+            <p><strong>Affiliation:</strong> {{selectedCharacter.affiliation}}</p>
+          </div>
+
+          <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
+            <p><strong>Description:</strong></p>
+            <p>{{selectedCharacter.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

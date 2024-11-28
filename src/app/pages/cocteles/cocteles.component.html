@@ -1,1 +1,10 @@
-<p>cocteles works!</p>
+<h2 class="text-center mb-4">Navega y busca cocteles</h2>
+
+<div class="row">
+    <coctel-search (eventSearch)="searchCoctel($event)" />
+  </div>
+  
+  <coctel-paginacion [currentPage]="currentPage" [totalPages]="totalPages" [cocteles]="cocteles"
+    (changePage)="onPageChange($event)">
+  </coctel-paginacion>
+  

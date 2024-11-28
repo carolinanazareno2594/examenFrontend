@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="row">
+    <div *ngFor="let coctel of cocteles" class="col-md-4 mb-3">
+      <div class="card">
+
+        <div *ngIf="!imageLoaded" class="d-flex justify-content-center align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200"
+            height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g>
+              <path stroke="none" fill="#68f01b" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50">
+                <animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="10s"
+                  type="rotate" attributeName="transform"></animateTransform>
+              </path>
+              <g></g>
+            </g>
+          </svg>
+        </div>
+
+        <img [src]="coctel.strDrinkThumb" class="card-img-top" alt="{{ coctel.strDrink }}" loading="lazy"
+          (load)="imageLoaded = true">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-2">{{ coctel.strDrink }}</h5>
+          <li class="btn btn-outline-primary w-100" (click)="openModal(coctel.idDrink)">Mas información</li>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="Page navigation example" class="mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage <= 1 }">
+        <a class="page-link" style="cursor: pointer;" (click)="previousPage()">Anterior</a>
+      </li>
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage >= totalPages }">
+        <a class="page-link" style="cursor: pointer;" (click)="nextPage()">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<coctel-modal></coctel-modal>
